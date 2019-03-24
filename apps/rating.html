@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Airtable Survey</title>
+</head>
+
+<body>
+
+
+<div>
+
+<div class="card"
+<h2>Form</h2>
+</div>
+<hr>
+
+<form action="#0" id="rating-form" class="rating-form">
+  <h1>What is the model rating?</h1>
+  <div>
+    <select name="rating_choice" id="rating_choice">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </div>  
+  <div>
+    <input type="submit" value="rating-value">
+  </div>
+</form>
+
+</div>
+
+
+<!-- SCRIPTS -->
+
+<script>
+// Get new md
+// Get the rating-form-values
+var form = document.querySelector("#rating-form"); 
+var select = document.querySelector("#rating_choice"); 
+
+// addEventListener - for when the form is submitted
+form.addEventListener("submit", function(event) { event.preventDefault(); 
+
+// POST the data 
+axios.post(airtable_write_endpoint, { "fields": { "Rating": select.options[select.selectedIndex].value } }); });
+
+// Get the data
+function getData() { 
+// zero out data 
+pollData = { "0": 0, "1": 0, "2": 0, "3": 0, "4": 0, "5": 0}; 
+// GET the data
+axios.get(airtable_read_endpoint)
+ .then (function(result) { 
+ 		result.data.records.forEach(function(element, index) { 
+ 		pollData[element.fields["Rating Choice"]]++;
+ 		 }); 
+ 	}
+
+</script>
+
+</body>
+</html>
