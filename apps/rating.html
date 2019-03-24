@@ -51,13 +51,18 @@ axios.post(airtable_write_endpoint, { "fields": { "Rating": select.options[selec
 function getData() { 
 // zero out data 
 pollData = { "0": 0, "1": 0, "2": 0, "3": 0, "4": 0, "5": 0}; 
+}
 // GET the data
 axios.get(airtable_read_endpoint)
  .then (function(result) { 
  		result.data.records.forEach(function(element, index) { 
  		pollData[element.fields["Rating Choice"]]++;
- 		 }); 
- 	}
+    }); 
+ 	});
+
+// Get Data
+getData();
+
 
 </script>
 
