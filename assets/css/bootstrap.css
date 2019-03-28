@@ -160,7 +160,7 @@ a {
 
 a:hover {
   color: #0056b3;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 a:not([href]):not([tabindex]) {
@@ -2955,11 +2955,11 @@ fieldset:disabled a.btn {
 
 .btn-link:hover {
   color: #0056b3;
-  text-decoration: underline;
+  /* text-decoration: underline; */
 }
 
 .btn-link:focus, .btn-link.focus {
-  text-decoration: underline;
+  /* text-decoration: underline; */
   box-shadow: none;
 }
 
